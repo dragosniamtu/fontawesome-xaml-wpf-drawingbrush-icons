@@ -36,6 +36,16 @@ Then use any icon brush by key:
 dotnet build ".\\01 Font Awesome in XAML.sln"
 ```
 
+## Demo app
+
+The solution includes a `DemoApp` WPF project that displays all icons and supports live filtering through a search textbox.
+
+Run it with:
+
+```powershell
+dotnet run --project ".\\DemoApp\\DemoApp.csproj"
+```
+
 ## Licensing
 
 The repository code and project files are licensed under the MIT License. The generated icon geometry in `XamlTemplatesEngine.Icons/Icons.xaml` is derived from Font Awesome 4.7.0 glyph data and is subject to the applicable third-party notices and license terms described in `THIRD-PARTY-NOTICES.md`.
