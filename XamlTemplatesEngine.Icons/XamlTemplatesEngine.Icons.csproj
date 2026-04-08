@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>XamlTemplatesEngine.Icons</AssemblyName>
+    <RootNamespace>XamlTemplatesEngine.Icons</RootNamespace>
+    <SharedLibOutputDir>$(MSBuildProjectDirectory)\..\libs\</SharedLibOutputDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Page Update="Icons.xaml" />
+    <None Include="..\THIRD-PARTY-NOTICES.md"
+          Link="THIRD-PARTY-NOTICES.md"
+          Pack="true"
+          PackagePath="."
+          CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <Target Name="CopyBuildOutputToSharedLibs" AfterTargets="Build">
+    <ItemGroup>
+      <SharedLibFiles Include="$(TargetPath)" />
+      <SharedLibFiles Include="$(TargetDir)$(TargetName).pdb"
+                      Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
+      <SharedLibFiles Include="$(TargetDir)THIRD-PARTY-NOTICES.md"
+                      Condition="Exists('$(TargetDir)THIRD-PARTY-NOTICES.md')" />
+    </ItemGroup>
+    <MakeDir Directories="$(SharedLibOutputDir)" />
+    <Copy SourceFiles="@(SharedLibFiles)"
+          DestinationFolder="$(SharedLibOutputDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>
