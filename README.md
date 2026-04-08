@@ -40,6 +40,8 @@ dotnet build ".\\01 Font Awesome in XAML.sln"
 
 The solution includes a `DemoApp` WPF project that displays all icons and supports live filtering through a search textbox.
 
+![Demo app screenshot](docs/demo-app.png)
+
 Run it with:
 
 ```powershell
